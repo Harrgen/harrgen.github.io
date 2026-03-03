@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Automation Engineer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -15,8 +15,8 @@
     --accent2: #06b6d4;
     --accent3: #10b981;
     --accent4: #f59e0b;
-    --text: #e8e8f0;
-    --muted: #6b6b8a;
+    --text: #f0f0f8;
+    --muted: #a0a0c0;
     --glow: rgba(124, 58, 237, 0.3);
     --glow2: rgba(6, 182, 212, 0.2);
   }
@@ -28,8 +28,10 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Mono', monospace;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* NOISE TEXTURE */
@@ -77,10 +79,10 @@
   }
 
   .nav-links a {
-    color: var(--muted);
+    color: #b0b0cc;
     text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s;
   }
@@ -202,18 +204,19 @@
 
   .hero-title {
     font-size: 1rem;
+    font-family: 'DM Mono', monospace;
     color: var(--accent2);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 24px;
     animation: fadeInUp 0.8s 0.2s ease both;
   }
 
   .hero-desc {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
     color: var(--muted);
-    line-height: 1.8;
+    line-height: 1.85;
     max-width: 540px;
     margin-bottom: 48px;
     animation: fadeInUp 0.8s 0.3s ease both;
@@ -341,7 +344,7 @@
   }
 
   .section-num {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--accent2);
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -414,18 +417,18 @@
   }
 
   .tool-type {
-    font-size: 0.65rem;
-    color: var(--muted);
+    font-size: 0.68rem;
+    color: #8888aa;
     margin-top: 2px;
     letter-spacing: 0.05em;
   }
 
   /* WORKFLOWS */
   .workflows-intro {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--muted);
     max-width: 600px;
-    line-height: 1.8;
+    line-height: 1.85;
     margin-bottom: 64px;
     margin-top: -32px;
   }
@@ -434,10 +437,10 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: #a0a0c0;
     margin-bottom: 24px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
@@ -593,9 +596,9 @@
   }
 
   .workflow-desc {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 20px;
   }
 
@@ -607,12 +610,12 @@
   }
 
   .tag {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     padding: 4px 12px;
     border-radius: 100px;
     background: var(--surface2);
     border: 1px solid var(--border);
-    color: var(--muted);
+    color: #b0b0cc;
     letter-spacing: 0.05em;
   }
 
@@ -625,8 +628,8 @@
   }
 
   .wf-steps {
-    font-size: 0.7rem;
-    color: var(--muted);
+    font-size: 0.78rem;
+    color: #a0a0c0;
   }
 
   .wf-steps span {
@@ -638,8 +641,8 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.65rem;
-    color: var(--muted);
+    font-size: 0.72rem;
+    color: #a0a0c0;
     letter-spacing: 0.05em;
   }
 
@@ -708,9 +711,9 @@
   }
 
   .step-desc {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   /* CONTACT */
@@ -763,9 +766,9 @@
   .contact-title span { color: var(--accent2); }
 
   .contact-sub {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--muted);
-    line-height: 1.8;
+    line-height: 1.85;
     max-width: 500px;
     margin: 0 auto 48px;
     position: relative;
@@ -822,15 +825,150 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero { padding: 100px 24px 60px; }
+  .nav-links-mobile { display: none; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+
+  /* Tablet */
+  @media (max-width: 1024px) {
     .hero-stats { display: none; }
-    section { padding: 60px 24px; }
+    .hero { padding: 120px 40px 80px; }
+    section { padding: 80px 40px; }
+    nav { padding: 18px 40px; }
     .workflows-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+      padding: 14px 20px;
+      justify-content: space-between;
+    }
+    .nav-links { display: none; }
+    .nav-logo { font-size: 1rem; }
+
+    /* NAV HAMBURGER (show hire me only) */
+    .nav-links-mobile {
+      display: flex !important;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 90px 20px 60px;
+      min-height: auto;
+    }
+    .hero-name {
+      font-size: clamp(2.4rem, 11vw, 3.5rem);
+      margin-bottom: 14px;
+    }
+    .hero-title { font-size: 0.8rem; letter-spacing: 0.12em; }
+    .hero-desc { font-size: 0.85rem; margin-bottom: 32px; }
+    .hero-stats { display: none; }
+    .hero-tag { font-size: 0.65rem; padding: 5px 14px; }
+
+    .hero-btns {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .btn-primary, .btn-outline {
+      text-align: center;
+      padding: 14px 20px;
+      width: 100%;
+    }
+
+    /* Inline contact links under buttons */
+    .hero-btns + div {
+      flex-direction: column !important;
+      gap: 10px !important;
+      align-items: flex-start !important;
+      margin-top: 20px !important;
+    }
+    .hero-btns + div span[style*="border"] { display: none !important; }
+
+    /* SECTIONS */
+    section { padding: 56px 20px; }
+    #tools { padding: 56px 20px; }
+    #process { padding: 56px 20px; }
+    #contact { padding: 72px 20px; }
+
+    .section-header { margin-bottom: 36px; gap: 12px; }
+    .section-title { font-size: 1.8rem; }
+    .section-line { flex: 0 0 30px; }
+
+    /* TOOLS */
+    .tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .tool-card { padding: 14px; gap: 10px; }
+    .tool-icon { width: 30px; height: 30px; font-size: 0.9rem; }
+    .tool-name { font-size: 0.75rem; }
+    .tool-type { font-size: 0.6rem; }
+
+    /* WORKFLOWS */
+    .workflows-intro { font-size: 0.82rem; margin-bottom: 36px; }
+    .workflows-grid { grid-template-columns: 1fr; gap: 16px; }
+    .platform-label { font-size: 0.65rem; }
+
+    .workflow-visual { padding: 20px; min-height: 100px; }
+    .wf-node { width: 30px; height: 30px; font-size: 0.75rem; }
+    .workflow-body { padding: 18px 20px; }
+    .workflow-title { font-size: 1rem; }
+    .workflow-desc { font-size: 0.78rem; }
+    .tag { font-size: 0.6rem; padding: 3px 10px; }
+
+    /* PROCESS */
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: 2px;
+      border-radius: 12px;
+    }
+    .process-step { padding: 28px 24px; }
+    .step-num { font-size: 2.5rem; margin-bottom: 12px; }
+    .step-title { font-size: 0.95rem; }
+    .step-desc { font-size: 0.78rem; }
+
+    /* CONTACT */
+    .contact-title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+    .contact-sub { font-size: 0.82rem; margin-bottom: 32px; }
+
+    /* Contact card padding */
+    #contact > div[style*="inline-block"] {
+      padding: 24px 20px !important;
+    }
+
+    .contact-links {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .contact-link {
+      justify-content: center;
+      padding: 14px 20px;
+      font-size: 0.78rem;
+    }
+
+    /* FOOTER */
+    footer {
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 0.65rem;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width: 380px) {
+    .hero-name { font-size: 2.2rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .tool-card { flex-direction: row; }
+    nav { padding: 12px 16px; }
+    section { padding: 48px 16px; }
   }
 </style>
 </head>
@@ -844,6 +982,7 @@
     <li><a href="#process">Process</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
+  <a href="#contact" style="display:none;background:var(--accent);color:white;padding:8px 18px;border-radius:4px;font-size:0.75rem;letter-spacing:0.08em;text-decoration:none;font-family:'DM Mono',monospace;" class="nav-links-mobile">Hire Me</a>
 </nav>
 
 <!-- HERO -->
@@ -869,8 +1008,8 @@
       <a href="https://wa.me/254768639071" target="_blank" class="btn-outline">📲 WhatsApp Me</a>
     </div>
     <div style="margin-top:28px;display:flex;align-items:center;gap:20px;animation:fadeInUp 0.8s 0.5s ease both;">
-      <a href="mailto:joshuaokwoyo368@gmail.com" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
-        <span style="font-size:0.85rem">📧</span> joshuaokwoyo368@gmail.com
+      <a href="/cdn-cgi/l/email-protection#e08a8f938895818f8b978f998fd3d6d8a0878d81898cce838f8d" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
+        <span style="font-size:0.85rem">📧</span> <span class="__cf_email__" data-cfemail="3f55504c574a5e5054485046500c09077f58525e5653115c5052">[email&#160;protected]</span>
       </a>
       <span style="color:var(--border)">|</span>
       <a href="https://www.linkedin.com/in/joshua-okwoyo-10a40a242/" target="_blank" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
@@ -1465,9 +1604,9 @@
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
-      <a href="mailto:joshuaokwoyo368@gmail.com" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
+      <a href="/cdn-cgi/l/email-protection#5c36332f34293d33372b3325336f6a641c3b313d3530723f3331" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
         <span style="font-size:1.1rem;width:24px;text-align:center;">📧</span>
-        <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Email</div>joshuaokwoyo368@gmail.com</div>
+        <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Email</div><span class="__cf_email__" data-cfemail="a4cecbd7ccd1c5cbcfd3cbddcb97929ce4c3c9c5cdc88ac7cbc9">[email&#160;protected]</span></div>
       </a>
       <a href="tel:+254768639071" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='var(--accent3)';this.style.color='var(--accent3)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
         <span style="font-size:1.1rem;width:24px;text-align:center;">📞</span>
@@ -1481,23 +1620,10 @@
   </div>
 
   <div class="contact-links">
-    <a href="mailto:joshuaokwoyo368@gmail.com" class="contact-link">
+    <a href="/cdn-cgi/l/email-protection#b9d3d6cad1ccd8d6d2ced6c0d68a8f81f9ded4d8d0d597dad6d4" class="contact-link">
       <span>📧</span> Send Email
     </a>
     <a href="https://wa.me/254768639071" target="_blank" class="contact-link">
       <span>💬</span> WhatsApp
     </a>
-    <a href="https://www.linkedin.com/in/joshua-okwoyo-10a40a242/" target="_blank" class="contact-link">
-      <span>💼</span> LinkedIn
-    </a>
-  </div>
-</section>
-
-<footer>
-  <span>© 2025 — Joshua O. Onchaga</span>
-  <span>joshuaokwoyo368@gmail.com · +254 768 639 071</span>
-  <span style="color:var(--accent2)">Make.com · n8n · AI</span>
-</footer>
-
-</body>
-</html>
+    <a href="https://www.linkedin.
