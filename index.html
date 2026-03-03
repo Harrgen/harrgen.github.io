@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation Engineer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a28;
+    --border: #2a2a40;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --accent3: #10b981;
+    --accent4: #f59e0b;
+    --text: #e8e8f0;
+    --muted: #6b6b8a;
+    --glow: rgba(124, 58, 237, 0.3);
+    --glow2: rgba(6, 182, 212, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+
+  .nav-logo span {
+    color: var(--accent2);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.1em !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: #6d28d9 !important;
+    transform: translateY(-1px);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124, 58, 237, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  .hero-orb1 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .hero-orb2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
+    bottom: 50px;
+    left: 100px;
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.4);
+    color: #a78bfa;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #a78bfa;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s 0.1s ease both;
+  }
+
+  .hero-name .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  }
+
+  .hero-title {
+    font-size: 1rem;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.8s 0.2s ease both;
+  }
+
+  .hero-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 540px;
+    margin-bottom: 48px;
+    animation: fadeInUp 0.8s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    animation: fadeInUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 2;
+    animation: fadeInRight 0.8s 0.5s ease both;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translate(30px, -50%); }
+    to { opacity: 1; transform: translate(0, -50%); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-size: 0.7rem;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-line {
+    height: 1px;
+    background: var(--border);
+    flex: 0 0 60px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title span {
+    color: var(--accent2);
+  }
+
+  /* TOOLS */
+  #tools {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .tool-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .tool-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+  }
+
+  .tool-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .tool-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .tool-type {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  /* WORKFLOWS */
+  .workflows-intro {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+    margin-top: -32px;
+  }
+
+  .platform-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .platform-badge {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .badge-make {
+    background: rgba(124, 58, 237, 0.2);
+    color: #a78bfa;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+  }
+
+  .badge-n8n {
+    background: rgba(234, 88, 12, 0.2);
+    color: #fb923c;
+    border: 1px solid rgba(234, 88, 12, 0.3);
+  }
+
+  .workflows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+
+  .workflow-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .workflow-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(124, 58, 237, 0.2);
+  }
+
+  .workflow-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .workflow-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-make::before { background: linear-gradient(90deg, #7c3aed, #06b6d4); }
+  .card-n8n::before { background: linear-gradient(90deg, #ea580c, #f59e0b); }
+
+  .workflow-visual {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 28px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wf-nodes {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .wf-node {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 2px var(--surface2);
+  }
+
+  .wf-arrow {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), var(--border));
+    position: relative;
+    min-width: 16px;
+  }
+
+  .wf-arrow::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    border: 3px solid transparent;
+    border-left-color: var(--border);
+  }
+
+  .wf-split {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .wf-branch {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .workflow-body {
+    padding: 24px 28px;
+  }
+
+  .workflow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .workflow-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .wf-platform {
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .workflow-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .workflow-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .workflow-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .wf-steps {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .wf-steps span {
+    color: var(--accent2);
+    font-weight: 500;
+  }
+
+  .wf-complexity {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .complexity-dots {
+    display: flex;
+    gap: 3px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .dot.active {
+    background: var(--accent3);
+  }
+
+  /* PROCESS */
+  #process {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .process-step {
+    background: var(--surface);
+    padding: 40px 32px;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+
+  .process-step:hover .step-num {
+    color: var(--accent);
+  }
+
+  .step-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+    padding: 120px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .contact-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-title span { color: var(--accent2); }
+
+  .contact-sub {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    section { padding: 60px 24px; }
+    .workflows-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Joshua<span>.</span>O</div>
+  <ul class="nav-links">
+    <li><a href="#workflows">Workflows</a></li>
+    <li><a href="#tools">Stack</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for Projects</div>
+    <p style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent2);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;animation:fadeInUp 0.8s 0.05s ease both;">Joshua O. Onchaga</p>
+    <h1 class="hero-name">
+      No-Code<br>
+      <span class="line2">Automation</span>
+    </h1>
+    <p class="hero-title">// Make.com · n8n · AI Workflows</p>
+    <p class="hero-desc">
+      I build intelligent automation systems that eliminate repetitive work.
+      From multi-branch AI pipelines to real-time integrations — I connect
+      your tools and let the machines do the heavy lifting.
+    </p>
+    <div class="hero-btns">
+      <a href="#workflows" class="btn-primary">View My Work</a>
+      <a href="https://wa.me/254768639071" target="_blank" class="btn-outline">📲 WhatsApp Me</a>
+    </div>
+    <div style="margin-top:28px;display:flex;align-items:center;gap:20px;animation:fadeInUp 0.8s 0.5s ease both;">
+      <a href="mailto:joshuaokwoyo368@gmail.com" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
+        <span style="font-size:0.85rem">📧</span> joshuaokwoyo368@gmail.com
+      </a>
+      <span style="color:var(--border)">|</span>
+      <a href="https://www.linkedin.com/in/joshua-okwoyo-10a40a242/" target="_blank" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
+        <span style="font-size:0.85rem">💼</span> LinkedIn
+      </a>
+      <span style="color:var(--border)">|</span>
+      <a href="tel:+254768639071" style="display:flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:0.72rem;letter-spacing:0.05em;transition:color 0.2s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--muted)'">
+        <span style="font-size:0.85rem">📞</span> +254 768 639 071
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Workflows Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Platforms</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">No-Code</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">My <span>Stack</span></h2>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(124,58,237,0.15)">🟣</div>
+      <div><div class="tool-name">Make.com</div><div class="tool-type">Automation Platform</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(234,88,12,0.15)">🔶</div>
+      <div><div class="tool-name">n8n</div><div class="tool-type">Automation Platform</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(16,185,129,0.15)">🤖</div>
+      <div><div class="tool-name">OpenAI / GPT</div><div class="tool-type">AI & LLMs</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(6,182,212,0.15)">🔍</div>
+      <div><div class="tool-name">Perplexity AI</div><div class="tool-type">AI Research</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(52,211,153,0.15)">📊</div>
+      <div><div class="tool-name">Airtable</div><div class="tool-type">Database</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(59,130,246,0.15)">📅</div>
+      <div><div class="tool-name">Google Calendar</div><div class="tool-type">Scheduling</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(34,197,94,0.15)">📋</div>
+      <div><div class="tool-name">Google Sheets</div><div class="tool-type">Spreadsheets</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(99,102,241,0.15)">🔗</div>
+      <div><div class="tool-name">Webhooks</div><div class="tool-type">API Triggers</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(245,158,11,0.15)">📘</div>
+      <div><div class="tool-name">Zoho Books</div><div class="tool-type">Accounting</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(239,68,68,0.15)">📸</div>
+      <div><div class="tool-name">Instagram / Facebook</div><div class="tool-type">Social Media</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(14,165,233,0.15)">💼</div>
+      <div><div class="tool-name">LinkedIn</div><div class="tool-type">Social Media</div></div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(168,85,247,0.15)">📞</div>
+      <div><div class="tool-name">Vapi</div><div class="tool-type">Voice AI</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOWS -->
+<section id="workflows">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Featured <span>Workflows</span></h2>
+  </div>
+  <p class="workflows-intro">
+    Real automation systems built for real business needs. Each workflow below
+    represents hours of architecture thinking, edge-case handling, and iterative refinement.
+  </p>
+
+  <!-- MAKE WORKFLOWS -->
+  <div class="platform-label">
+    <span class="platform-badge badge-make">Make.com</span>
+    Completed Scenarios
+  </div>
+  <div class="workflows-grid">
+
+    <!-- Appointment Checking -->
+    <div class="workflow-card card-make">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#e53e3e;font-size:0.8rem">🔗</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#38a169;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#3182ce;font-size:0.8rem">📅</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#68d391;font-size:0.8rem">⚡</div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex:1">
+            <div class="wf-branch">
+              <div class="wf-arrow" style="background:linear-gradient(90deg, transparent, var(--border));min-width:8px"></div>
+              <div class="wf-node" style="background:#3182ce;font-size:0.7rem">📅</div>
+              <div class="wf-arrow" style="min-width:8px"></div>
+              <div class="wf-node" style="background:#e53e3e;font-size:0.7rem">🔗</div>
+            </div>
+            <div class="wf-branch">
+              <div class="wf-arrow" style="background:linear-gradient(90deg, transparent, var(--border));min-width:8px"></div>
+              <div class="wf-node" style="background:#805ad5;font-size:0.7rem">🔧</div>
+              <div class="wf-arrow" style="min-width:8px"></div>
+              <div class="wf-node" style="background:#3182ce;font-size:0.7rem">📅</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#38a169;font-size:0.7rem">🤖</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">AI Voice Appointment Booking</h3>
+          <span class="wf-platform platform-badge badge-make">Make</span>
+        </div>
+        <p class="workflow-desc">
+          Vapi voice AI captures appointment requests and routes them through GPT to check real-time Google Calendar availability. Books confirmed slots instantly or suggests alternatives with AEST timezone conversion.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Vapi</span>
+          <span class="tag">GPT-4</span>
+          <span class="tag">Google Calendar</span>
+          <span class="tag">Webhooks</span>
+          <span class="tag">Router</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>11</span> modules</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot"></div>
+            </div>
+            Advanced
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bank Reconciliation -->
+    <div class="workflow-card card-make">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#63b3ed;font-size:0.8rem">📦</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#63b3ed;font-size:0.8rem">📦</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#38a169;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#63b3ed;font-size:0.8rem">📦</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#2b6cb0;font-size:0.7rem">📒</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#63b3ed;font-size:0.7rem">📦</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#f6ad55;font-size:0.7rem">🔁</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#68d391;font-size:0.7rem">⚡</div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">Automated Bank Reconciliation</h3>
+          <span class="wf-platform platform-badge badge-make">Make</span>
+        </div>
+        <p class="workflow-desc">
+          Pulls transaction records from Airtable, uses AI to classify and match entries against Zoho Books, then iterates through discrepancies with a router to flag unmatched items or auto-reconcile confirmed matches.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Airtable</span>
+          <span class="tag">Zoho Books</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Iterator</span>
+          <span class="tag">Router</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>13</span> modules</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+            </div>
+            Expert
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media Content Generation -->
+    <div class="workflow-card card-make">
+      <div class="workflow-visual">
+        <div class="wf-nodes" style="flex-direction:column; gap:8px; align-items:flex-start">
+          <div style="display:flex;align-items:center;gap:0;width:100%">
+            <div class="wf-node" style="background:#38a169;font-size:0.8rem">📊</div>
+            <div class="wf-arrow" style="max-width:30px"></div>
+            <div class="wf-node" style="background:#38a169;font-size:0.8rem">🤖</div>
+            <div class="wf-arrow" style="max-width:30px"></div>
+            <div class="wf-node" style="background:#68d391;font-size:0.8rem">⚡</div>
+            <div style="display:flex;flex-direction:column;gap:5px;flex:1;padding-left:8px">
+              <div class="wf-branch" style="gap:4px">
+                <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+                <div class="wf-arrow" style="min-width:6px;max-width:16px"></div>
+                <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+                <div class="wf-arrow" style="min-width:6px;max-width:16px"></div>
+                <div class="wf-node" style="background:#68d391;font-size:0.6rem;width:28px;height:28px">⚡</div>
+                <div class="wf-arrow" style="min-width:4px;max-width:10px"></div>
+                <div class="wf-node" style="background:#4285f4;font-size:0.6rem;width:28px;height:28px">📄</div>
+              </div>
+              <div class="wf-branch" style="gap:4px">
+                <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+                <div class="wf-arrow" style="min-width:6px;max-width:16px"></div>
+                <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+                <div class="wf-arrow" style="min-width:6px;max-width:16px"></div>
+                <div class="wf-node" style="background:#1877f2;font-size:0.6rem;width:28px;height:28px">👥</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">Multi-Platform Content Generation</h3>
+          <span class="wf-platform platform-badge badge-make">Make</span>
+        </div>
+        <p class="workflow-desc">
+          Reads topics from Google Sheets, generates platform-tailored content with GPT, then distributes across multiple channels via routed branches — saving to Google Docs, publishing to Facebook Pages, and more.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Google Sheets</span>
+          <span class="tag">GPT-4</span>
+          <span class="tag">Google Docs</span>
+          <span class="tag">Facebook Pages</span>
+          <span class="tag">Multi-Branch</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>18</span> modules</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+            </div>
+            Expert
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sheet To Social Media -->
+    <div class="workflow-card card-make">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#38a169;font-size:0.8rem">📊</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#38a169;font-size:0.8rem">🔍</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#68d391;font-size:0.8rem">⚡</div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex:1;padding-left:6px">
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#4285f4;font-size:0.6rem;width:28px;height:28px">📄</div>
+            </div>
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#0a66c2;font-size:0.6rem;width:28px;height:28px">💼</div>
+            </div>
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#38a169;font-size:0.6rem;width:28px;height:28px">🤖</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#e1306c;font-size:0.6rem;width:28px;height:28px">📸</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">Sheet → Social Media Publisher</h3>
+          <span class="wf-platform platform-badge badge-make">Make</span>
+        </div>
+        <p class="workflow-desc">
+          Watches Google Sheets for new rows, researches context with Perplexity AI, then simultaneously generates and publishes tailored posts to LinkedIn, Instagram (with AI-generated images), Facebook, and Google Docs.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Perplexity AI</span>
+          <span class="tag">DALL-E</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">Instagram</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>10</span> modules</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot"></div>
+            </div>
+            Advanced
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- N8N WORKFLOWS -->
+  <div class="platform-label" style="margin-top:16px">
+    <span class="platform-badge badge-n8n">n8n</span>
+    Production Workflows
+  </div>
+  <div class="workflows-grid">
+
+    <!-- n8n: Lead Nurture -->
+    <div class="workflow-card card-n8n">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#ea580c;font-size:0.8rem">📧</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#16a34a;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#dc2626;font-size:0.8rem">⚡</div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex:1;padding-left:6px">
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#0a66c2;font-size:0.6rem;width:28px;height:28px">💼</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#7c3aed;font-size:0.6rem;width:28px;height:28px">📋</div>
+            </div>
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#ea580c;font-size:0.6rem;width:28px;height:28px">📧</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#16a34a;font-size:0.6rem;width:28px;height:28px">🤖</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#2563eb;font-size:0.6rem;width:28px;height:28px">📩</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">AI Lead Nurture Pipeline</h3>
+          <span class="wf-platform platform-badge badge-n8n">n8n</span>
+        </div>
+        <p class="workflow-desc">
+          Monitors Gmail for new leads, scores them with GPT-4, enriches data via LinkedIn, routes hot leads to HubSpot CRM and sends AI-personalized follow-up emails. Cold leads enter a Notion drip sequence.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Gmail</span>
+          <span class="tag">GPT-4</span>
+          <span class="tag">HubSpot</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">Notion</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>14</span> nodes</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+            </div>
+            Expert
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- n8n: Invoice Automation -->
+    <div class="workflow-card card-n8n">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#f59e0b;font-size:0.8rem">⏰</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#63b3ed;font-size:0.8rem">📦</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#16a34a;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#ea580c;font-size:0.8rem">⚡</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#7c3aed;font-size:0.8rem">📋</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#2563eb;font-size:0.8rem">📧</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#16a34a;font-size:0.8rem">✅</div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">Invoice & Payment Automation</h3>
+          <span class="wf-platform platform-badge badge-n8n">n8n</span>
+        </div>
+        <p class="workflow-desc">
+          Scheduled trigger pulls overdue invoices from Airtable, AI drafts contextual reminder emails per client history, generates PDF invoices, sends via SendGrid, and marks as sent with follow-up scheduling.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Airtable</span>
+          <span class="tag">GPT-4</span>
+          <span class="tag">PDF Generation</span>
+          <span class="tag">SendGrid</span>
+          <span class="tag">Scheduler</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>9</span> nodes</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot"></div>
+            </div>
+            Advanced
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- n8n: RAG Chatbot -->
+    <div class="workflow-card card-n8n">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#7c3aed;font-size:0.8rem">💬</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#16a34a;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#2563eb;font-size:0.8rem">🔍</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#dc2626;font-size:0.8rem">📚</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#16a34a;font-size:0.8rem">🤖</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#7c3aed;font-size:0.8rem">💬</div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">RAG Knowledge Base Chatbot</h3>
+          <span class="wf-platform platform-badge badge-n8n">n8n</span>
+        </div>
+        <p class="workflow-desc">
+          Webhook-triggered chatbot using Retrieval-Augmented Generation. Incoming questions are embedded and semantically searched against a Pinecone vector store, then answered by GPT with source-grounded context only.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Webhook</span>
+          <span class="tag">Pinecone</span>
+          <span class="tag">Embeddings</span>
+          <span class="tag">GPT-4</span>
+          <span class="tag">RAG</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>8</span> nodes</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+            </div>
+            Expert
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- n8n: E-commerce Order Flow -->
+    <div class="workflow-card card-n8n">
+      <div class="workflow-visual">
+        <div class="wf-nodes">
+          <div class="wf-node" style="background:#ea580c;font-size:0.8rem">🛒</div>
+          <div class="wf-arrow"></div>
+          <div class="wf-node" style="background:#dc2626;font-size:0.8rem">⚡</div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex:1;padding-left:6px">
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#2563eb;font-size:0.6rem;width:28px;height:28px">📧</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#16a34a;font-size:0.6rem;width:28px;height:28px">✅</div>
+            </div>
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#f59e0b;font-size:0.6rem;width:28px;height:28px">📦</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#63b3ed;font-size:0.6rem;width:28px;height:28px">📦</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#16a34a;font-size:0.6rem;width:28px;height:28px">🤖</div>
+            </div>
+            <div class="wf-branch" style="gap:4px">
+              <div class="wf-node" style="background:#7c3aed;font-size:0.6rem;width:28px;height:28px">💬</div>
+              <div class="wf-arrow" style="min-width:4px"></div>
+              <div class="wf-node" style="background:#34d399;font-size:0.6rem;width:28px;height:28px">📱</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-body">
+        <div class="workflow-header">
+          <h3 class="workflow-title">E-commerce Order Intelligence</h3>
+          <span class="wf-platform platform-badge badge-n8n">n8n</span>
+        </div>
+        <p class="workflow-desc">
+          Shopify webhook triggers a 3-way router: sends confirmation emails, syncs inventory to Airtable with AI reorder predictions, and sends WhatsApp shipping updates. High-value orders trigger Slack alerts.
+        </p>
+        <div class="workflow-tags">
+          <span class="tag">Shopify</span>
+          <span class="tag">Airtable</span>
+          <span class="tag">WhatsApp</span>
+          <span class="tag">Slack</span>
+          <span class="tag">OpenAI</span>
+        </div>
+        <div class="workflow-footer">
+          <div class="wf-steps"><span>12</span> nodes</div>
+          <div class="wf-complexity">
+            <div class="complexity-dots">
+              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot"></div>
+            </div>
+            Advanced
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">My <span>Process</span></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-icon">🎯</div>
+      <h3 class="step-title">Discovery</h3>
+      <p class="step-desc">Map your current workflow bottlenecks and define the automation scope, triggers, and desired outcomes.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-icon">🗺️</div>
+      <h3 class="step-title">Architecture</h3>
+      <p class="step-desc">Design the flow logic, module structure, error handling paths, and data mapping before touching any tool.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-icon">⚙️</div>
+      <h3 class="step-title">Build</h3>
+      <p class="step-desc">Implement in Make.com or n8n with clean module naming, proper filtering, and API authentication.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-icon">🧪</div>
+      <h3 class="step-title">Test & Harden</h3>
+      <p class="step-desc">Run edge cases, stress-test with real data, and add error routes so nothing silently fails in production.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-icon">🚀</div>
+      <h3 class="step-title">Deploy & Document</h3>
+      <p class="step-desc">Go live, document every module, and hand over with a Loom walkthrough so you own it completely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-tag">Open to Work</div>
+  <h2 class="contact-title">Let's Build<br><span>Something Smart</span></h2>
+  <p class="contact-sub">
+    Have a repetitive process that's eating your team's time?
+    Let's automate it. I take on freelance projects, consulting,
+    and full workflow builds.
+  </p>
+
+  <!-- Contact card -->
+  <div style="display:inline-block;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px 48px;margin-bottom:40px;position:relative;z-index:1;text-align:left;max-width:520px;width:100%;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);">
+      <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">👨‍💻</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);">Joshua O. Onchaga</div>
+        <div style="font-size:0.7rem;color:var(--accent2);letter-spacing:0.12em;text-transform:uppercase;margin-top:3px;">No-Code Automation Engineer</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <a href="mailto:joshuaokwoyo368@gmail.com" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='var(--accent2)';this.style.color='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
+        <span style="font-size:1.1rem;width:24px;text-align:center;">📧</span>
+        <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Email</div>joshuaokwoyo368@gmail.com</div>
+      </a>
+      <a href="tel:+254768639071" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='var(--accent3)';this.style.color='var(--accent3)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
+        <span style="font-size:1.1rem;width:24px;text-align:center;">📞</span>
+        <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Phone / WhatsApp</div>+254 768 639 071</div>
+      </a>
+      <a href="https://www.linkedin.com/in/joshua-okwoyo-10a40a242/" target="_blank" style="display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;font-size:0.82rem;padding:12px 16px;border-radius:8px;border:1px solid var(--border);transition:all 0.2s;background:var(--surface2);" onmouseover="this.style.borderColor='#0a66c2';this.style.color='#60a5fa'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text)'">
+        <span style="font-size:1.1rem;width:24px;text-align:center;">💼</span>
+        <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">LinkedIn</div>joshua-okwoyo-10a40a242</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-links">
+    <a href="mailto:joshuaokwoyo368@gmail.com" class="contact-link">
+      <span>📧</span> Send Email
+    </a>
+    <a href="https://wa.me/254768639071" target="_blank" class="contact-link">
+      <span>💬</span> WhatsApp
+    </a>
+    <a href="https://www.linkedin.com/in/joshua-okwoyo-10a40a242/" target="_blank" class="contact-link">
+      <span>💼</span> LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 — Joshua O. Onchaga</span>
+  <span>joshuaokwoyo368@gmail.com · +254 768 639 071</span>
+  <span style="color:var(--accent2)">Make.com · n8n · AI</span>
+</footer>
+
+</body>
+</html>
